@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Istiqamah · Redeem a code</title>
+<style>body{margin:0;background:#FAF5EC;color:#3A2A21;font:17px/1.6 -apple-system,system-ui,sans-serif}main{max-width:560px;margin:0 auto;padding:48px 16px}a.b{display:inline-block;background:#B0502A;color:#FAF5EC;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600}code{background:#efe4d4;padding:2px 8px;border-radius:6px}@media (prefers-color-scheme:dark){body{background:#241733;color:#F3E9F7}code{background:#3B2A4D}}</style></head>
+<body><main><h1 style="font-weight:500">Istiqamah Tracker</h1><p id="msg">Opening the App Store…</p><p><a class="b" id="go" href="#">Redeem in the App Store</a></p><p class="m" id="alt"></p>
+<script>
+/* Influencer and partner links: https://gladtides.github.io/istiqamah-site/r.html?c=CODE
+   Fill APP_ID with the number from the App Store link once Istiqamah is live (apps.apple.com/app/id<APP_ID>). */
+const APP_ID="";
+const c=(new URLSearchParams(location.search).get("c")||"").toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,64);
+const url=APP_ID&&c?`https://apps.apple.com/redeem?ctx=offercodes&id=${APP_ID}&code=${encodeURIComponent(c)}`:APP_ID?`https://apps.apple.com/app/id${APP_ID}`:"index.html";
+document.getElementById("go").href=url;
+if(c)document.getElementById("alt").innerHTML=`Your code: <code>${c}</code>. You can also open Istiqamah → Istiqamah Plus → Redeem a code.`;
+if(APP_ID)setTimeout(()=>location.href=url,600);else document.getElementById("msg").textContent="Istiqamah is coming soon to the App Store.";
+</script></main></body></html>
